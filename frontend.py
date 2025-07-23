@@ -51,7 +51,7 @@ st.markdown("""
 <div style='text-align:center; font-size:2rem; font-weight:bold; margin-bottom: 1rem;'>🤖 Personal Chatbot</div>
 """, unsafe_allow_html=True)
 
-backend_url = "http://localhost:8000/chat"
+backend_url = "https://chatbot-0ojd.onrender.com/chat"
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = []
