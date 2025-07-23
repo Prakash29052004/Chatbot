@@ -1,8 +1,11 @@
+import os
 import requests
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from fastapi.responses import JSONResponse
+from dotenv import load_dotenv
+load_dotenv()
 
 app = FastAPI()
 
@@ -19,11 +22,12 @@ class ChatRequest(BaseModel):
     message: str
 
 GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
-GEMINI_API_KEY = "AIzaSyBP34KRObP85dy1gQ_Q8QcjnRAmFQB478w"  # Hardcoded for demonstration
 
 @app.post("/chat")
 async def chat_endpoint(chat_request: ChatRequest):
-    api_key = GEMINI_API_KEY
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        return JSONResponse(status_code=500, content={"error": "GEMINI_API_KEY environment variable not set."})
     headers = {"Content-Type": "application/json"}
     payload = {
         "contents": [
