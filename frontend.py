@@ -48,7 +48,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("""
-<div style='text-align:center; font-size:2rem; font-weight:bold; margin-bottom: 1rem;'>🤖 Persional Chatbot</div>
+<div style='text-align:center; font-size:2rem; font-weight:bold; margin-bottom: 1rem;'>🤖 Personal Chatbot</div>
 """, unsafe_allow_html=True)
 
 backend_url = "http://localhost:8000/chat"
